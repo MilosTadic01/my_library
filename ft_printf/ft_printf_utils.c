@@ -35,7 +35,7 @@ void	ft_putstr_mod(char *s, int *pflen)
 	return ;
 }
 
-size_t	ft_strlen(const char *s)
+size_t	printf_strlen(const char *s)
 {
 	size_t	i;
 

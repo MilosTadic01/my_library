@@ -16,7 +16,7 @@ void	ft_putnbr_base(ssize_t nb, char *base, int *pflen)
 {
 	int	bslen;
 
-	bslen = ft_strlen(base);
+	bslen = printf_strlen(base);
 	if (nb == 0)
 		*pflen += ft_putchar_mod(base[0]);
 	else if (nb > -bslen && nb < bslen)
@@ -42,7 +42,7 @@ void	ft_putszt_base(size_t nb, char *base, int *pflen)
 {
 	size_t	bslen;
 
-	bslen = ft_strlen(base);
+	bslen = printf_strlen(base);
 	if (nb == 0)
 		*pflen += ft_putchar_mod(base[0]);
 	else if (nb < bslen)

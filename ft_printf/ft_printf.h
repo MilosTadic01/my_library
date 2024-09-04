@@ -24,6 +24,6 @@ void	ft_putszt_base(size_t nb, char *base, int *pflen);
 void	ft_putnbr_base(ssize_t nb, char *base, int *pflen);
 void	ft_putstr_mod(char *s, int *pflen);
 int		ft_putchar_mod(char c);
-size_t	ft_strlen(const char *s);
+size_t	printf_strlen(const char *s);
 
 #endif
