@@ -3,78 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mitadic <mitadic@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: mitadic <mitadic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:34:19 by mitadic           #+#    #+#             */
-/*   Updated: 2024/01/17 12:31:33 by mitadic          ###   ########.fr       */
+/*   Updated: 2024/10/10 12:08:25 by mitadic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	start(char const *s1, char const *set)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (s1[i] != 0)
-	{
-		j = 0;
-		while (set[j] != 0 && s1[i] != set[j])
-			j++;
-		if (s1[i] == set[j])
-			i++;
-		else
-			break ;
-	}
-	return (i);
-}
-
-int	end(char const *s1, char const *set, int s1len)
-{
-	int	j;
-
-	while (s1len > 0)
-	{
-		j = 0;
-		while (set[j] != 0 && s1[s1len] != set[j])
-			j++;
-		if (s1[s1len] == set[j])
-			s1len--;
-		else
-			break ;
-	}
-	return (s1len);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*trimmed;
-	int		s1len;
-	int		a;
-	int		b;
-	int		i;
+	size_t	front;
+	size_t	rear;
+	char	*newstring;
 
-	if (!s1 || !set)
-		return (NULL);
-	s1len = ft_strlen(s1);
-	a = start(s1, set);
-	b = end(s1, set, s1len);
-	i = 0;
-	while ((a + i) <= b && b != 0)
-		i++;
-	trimmed = malloc((i + 1) * sizeof(char));
-	if (!trimmed)
-		return (NULL);
-	i = 0;
-	while ((a + i) <= b && b != 0)
+	front = 0;
+	rear = ft_strlen(s1);
+	newstring = 0;
+	if (s1 != 0 && set != 0)
 	{
-		trimmed[i] = s1[a + i];
-		i++;
+		while (s1[front] != '\0' && ft_strchr(set, s1[front]))
+			front++;
+		while (s1[rear - 1] != '\0' && ft_strchr(set, s1[rear - 1])
+			&& rear > front)
+		{
+			rear--;
+		}
+		if (front > rear)
+		{
+			return (ft_strdup(""));
+		}
+		newstring = (char *)malloc(sizeof(char) * (rear - front + 1));
+		if (newstring)
+			ft_strlcpy(newstring, &s1[front], rear - front + 1);
 	}
-	trimmed[i] = '\0';
-	return (trimmed);
+	return (newstring);
 }
 
 /*
