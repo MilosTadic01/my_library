@@ -25,7 +25,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	{
 		while (s1[front] != '\0' && ft_strchr(set, s1[front]))
 			front++;
-		while (s1[rear - 1] != '\0' && ft_strchr(set, s1[rear - 1])
+		while (rear > 0 && s1[rear - 1] != '\0' && ft_strchr(set, s1[rear - 1])
 			&& rear > front)
 		{
 			rear--;
