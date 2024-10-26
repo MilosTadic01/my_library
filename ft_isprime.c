@@ -18,7 +18,7 @@ int	ft_isprime(int nb)
 	i = 2;
 	if (nb < 2)
 		return (0);
-	while (i * i <= nb)
+	while (i <= nb / 2)
 	{
 		j = 2;
 		while (j <= i)
@@ -31,3 +31,13 @@ int	ft_isprime(int nb)
 	}
 	return (1);
 }
+
+//#include <stdio.h>
+//
+//int	main(void)
+//{
+//	int	i = -1;
+//
+//	while (++i < 100)
+//		printf("<%d> %s\n", i, ft_isprime(i) ? "is prime" : "-");
+//}
